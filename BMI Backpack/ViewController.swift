@@ -101,6 +101,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         setSliderMinMax(slider: heightSlider, units: (data?.units)!)
         heightSlider.setValue((self.data?.height)!, animated: false)
         weightTextField.text = String(Int((self.data?.weight)!))
+        
+        // initialize image view
+        imageView.image = UIImage(named: "bmi_30")
 
     }
 
@@ -123,7 +126,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         heightLabel.text = String(heightValue)
         
         bmiLabel.text = String((self.data?.bmi)!)
-
+        calculateBMI()
     }
     
     func setWeight(sender: UITextField ) {
@@ -132,20 +135,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.data?.weight = Float(weightValue!)
         
         bmiLabel.text = String((self.data?.bmi)!)
-        
+        calculateBMI()
     }
     
     func toggleUnits( _ sender: UISwitch) {
         if (sender.isOn) {
             print("metric ON")
             self.data?.units = Unit.metric
-            print(self.data?.height! ?? "no height")
-            print(self.data?.weight! ?? "no weight")
         } else {
             print("metric OFF (imperial)")
             self.data?.units = Unit.imperial
-            print(self.data?.height! ?? "no height")
-            print(self.data?.weight! ?? "no weight")
         }
         let currentUnits: Unit = (self.data?.units)!
         setSliderMinMax(slider: heightSlider, units: currentUnits)
@@ -168,6 +167,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func calculateBMI() {
         print("clicked calculate button")
+        print(self.data?.height! ?? "no height")
+        print(self.data?.weight! ?? "no weight")
+        let currentBMI:Double = Double((self.data?.bmi)!)
+        switch currentBMI {
+        case 0.0..<16.0:
+            imageView.image = UIImage(named: "bmi_L18_5")
+        case 16.0..<17.0:
+            imageView.image = UIImage(named: "bmi_L18_5")
+        case 17.0..<18.5:
+            imageView.image = UIImage(named: "bmi_L18_5")
+        case 18.5..<25.0:
+            imageView.image = UIImage(named: "bmi_18_5-25")
+        case 25.0..<30.0:
+            imageView.image = UIImage(named: "bmi_25-30")
+        case 30.0..<35.0:
+            imageView.image = UIImage(named: "bmi_30")
+        default:
+            imageView.image = UIImage(named: "bmi_40")
+        }
+        
     }
     
     func setSliderMinMax( slider: UISlider, units: Unit) {
@@ -186,7 +205,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if (self.data?.units == Unit.metric) {
             unitText = " cm"
         } else {
-            unitText = " inches"
+            unitText = " in."
         }
         minSliderLabel.text = String(Int(minLabel)) + unitText
         maxSliderLabel.text = String(Int(maxLabel)) + unitText

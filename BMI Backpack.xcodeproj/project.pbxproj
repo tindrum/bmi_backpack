@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D8F0FEE1E641C26001F951F /* bmi_18_5-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D8F0FE91E641C26001F951F /* bmi_18_5-25.png */; };
+		9D8F0FEF1E641C26001F951F /* bmi_25-30.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D8F0FEA1E641C26001F951F /* bmi_25-30.png */; };
+		9D8F0FF01E641C26001F951F /* bmi_30.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D8F0FEB1E641C26001F951F /* bmi_30.png */; };
+		9D8F0FF11E641C26001F951F /* bmi_40.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D8F0FEC1E641C26001F951F /* bmi_40.png */; };
+		9D8F0FF21E641C26001F951F /* bmi_L18_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D8F0FED1E641C26001F951F /* bmi_L18_5.png */; };
 		9D9649AA1E59760900E952DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9649A91E59760900E952DD /* AppDelegate.swift */; };
 		9D9649AC1E59760900E952DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9649AB1E59760900E952DD /* ViewController.swift */; };
 		9D9649AF1E59760900E952DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D9649AD1E59760900E952DD /* Main.storyboard */; };
@@ -17,6 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D8F0FE91E641C26001F951F /* bmi_18_5-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bmi_18_5-25.png"; path = "../images/bmi_18_5-25.png"; sourceTree = "<group>"; };
+		9D8F0FEA1E641C26001F951F /* bmi_25-30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bmi_25-30.png"; path = "../images/bmi_25-30.png"; sourceTree = "<group>"; };
+		9D8F0FEB1E641C26001F951F /* bmi_30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bmi_30.png; path = ../images/bmi_30.png; sourceTree = "<group>"; };
+		9D8F0FEC1E641C26001F951F /* bmi_40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bmi_40.png; path = ../images/bmi_40.png; sourceTree = "<group>"; };
+		9D8F0FED1E641C26001F951F /* bmi_L18_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bmi_L18_5.png; path = ../images/bmi_L18_5.png; sourceTree = "<group>"; };
 		9D9649A61E59760900E952DD /* BMI Backpack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BMI Backpack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9649A91E59760900E952DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D9649AB1E59760900E952DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,6 +49,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D8F0FE81E6417C4001F951F /* images */ = {
+			isa = PBXGroup;
+			children = (
+				9D8F0FE91E641C26001F951F /* bmi_18_5-25.png */,
+				9D8F0FEA1E641C26001F951F /* bmi_25-30.png */,
+				9D8F0FEB1E641C26001F951F /* bmi_30.png */,
+				9D8F0FEC1E641C26001F951F /* bmi_40.png */,
+				9D8F0FED1E641C26001F951F /* bmi_L18_5.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		9D96499D1E59760900E952DD = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +84,7 @@
 				9D9649AB1E59760900E952DD /* ViewController.swift */,
 				9D9649BB1E5976B100E952DD /* BMI_calculator.swift */,
 				9D9649BD1E5B98F900E952DD /* BMI_Backpack_list_of_tasks.txt */,
+				9D8F0FE81E6417C4001F951F /* images */,
 				9D9649AD1E59760900E952DD /* Main.storyboard */,
 				9D9649B01E59760900E952DD /* Assets.xcassets */,
 				9D9649B21E59760900E952DD /* LaunchScreen.storyboard */,
@@ -129,9 +152,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D8F0FF11E641C26001F951F /* bmi_40.png in Resources */,
+				9D8F0FEF1E641C26001F951F /* bmi_25-30.png in Resources */,
 				9D9649B41E59760900E952DD /* LaunchScreen.storyboard in Resources */,
+				9D8F0FEE1E641C26001F951F /* bmi_18_5-25.png in Resources */,
 				9D9649B11E59760900E952DD /* Assets.xcassets in Resources */,
 				9D9649AF1E59760900E952DD /* Main.storyboard in Resources */,
+				9D8F0FF01E641C26001F951F /* bmi_30.png in Resources */,
+				9D8F0FF21E641C26001F951F /* bmi_L18_5.png in Resources */,
 				9D9649BE1E5B98F900E952DD /* BMI_Backpack_list_of_tasks.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +333,7 @@
 				9D9649BA1E59760900E952DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
