@@ -34,6 +34,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var minSliderLabel: UILabel!
     var data:BMI? = nil
     
+    private var currentTextField: UITextField?
+    
     // min and max height of people from
     // http://www.cnn.com/2014/11/13/living/tallest-shortest-man-guinness/
     // Tallest man is 8 foot 3 inches,
@@ -43,6 +45,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        weightTextField.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
         // positioning the rotated slider is difficult
 //        print("Before Transform:")
@@ -118,6 +121,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
             // table.reloadData()
         }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
     func setHeight(sender: UISlider ) {
         let heightValue = Int(sender.value)
@@ -150,16 +158,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         setSliderMinMax(slider: heightSlider, units: currentUnits)
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if (textField == weightTextField ) {
-            let weightValue = Float(textField.text!)
-            print("text value changed to \(weightValue)")
-            self.data?.weight = Float(weightValue!)
-            
-            bmiLabel.text = String((self.data?.bmi)!)
-
-        }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        currentTextField = textField
     }
+    
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        if (textField == weightTextField ) {
+//            let weightValue = Float(textField.text!)
+//            print("text value changed to \(weightValue)")
+//            self.data?.weight = Float(weightValue!)
+//            
+//            bmiLabel.text = String((self.data?.bmi)!)
+//
+//        }
+//    }
     
     func editingWeight(sender: UITextField) {
         print("currently editing")
@@ -167,6 +179,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func calculateBMI() {
         print("clicked calculate button")
+        //: TODO fix the text field issue
+//        if let currentTextField = currentTextField {
+//            currentTextField.resignFirstResponder()
+//        }
         print(self.data?.height! ?? "no height")
         print(self.data?.weight! ?? "no weight")
         let currentBMI:Double = Double((self.data?.bmi)!)
