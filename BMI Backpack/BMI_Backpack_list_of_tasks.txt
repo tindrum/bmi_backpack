@@ -1,0 +1,17 @@
+create labels at the top and bottom of the slider
+create a label that holds the value of the slider
+create a text field to hold the weight
+create a on/off switch for metric/imperial units
+create two labels for the sides of the metric toggle switch
+create an image well to hold the pic of the BMI Man
+create an image well to hold the magenta backpack logo
+
+labels at top and bottom of slider need to get their values updated when metric toggle is changed.
+
+BMI object needs to update its internal weight and height when metric toggle is changed
+
+changes to BMI object need to trigger updates to GUI objects?
+
+changes to slider need to continuously broadcast values to BMI object to recompute bmi rating
+
+changes to value of weight text field (on complete editing) need to tell BMI object to re-compute

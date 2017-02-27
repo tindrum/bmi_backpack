@@ -12,6 +12,8 @@
 		9D9649AF1E59760900E952DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D9649AD1E59760900E952DD /* Main.storyboard */; };
 		9D9649B11E59760900E952DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D9649B01E59760900E952DD /* Assets.xcassets */; };
 		9D9649B41E59760900E952DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D9649B21E59760900E952DD /* LaunchScreen.storyboard */; };
+		9D9649BC1E5976B100E952DD /* BMI_calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9649BB1E5976B100E952DD /* BMI_calculator.swift */; };
+		9D9649BE1E5B98F900E952DD /* BMI_Backpack_list_of_tasks.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9D9649BD1E5B98F900E952DD /* BMI_Backpack_list_of_tasks.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		9D9649B01E59760900E952DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D9649B31E59760900E952DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D9649B51E59760900E952DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D9649BB1E5976B100E952DD /* BMI_calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMI_calculator.swift; sourceTree = "<group>"; };
+		9D9649BD1E5B98F900E952DD /* BMI_Backpack_list_of_tasks.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BMI_Backpack_list_of_tasks.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				9D9649A91E59760900E952DD /* AppDelegate.swift */,
 				9D9649AB1E59760900E952DD /* ViewController.swift */,
+				9D9649BB1E5976B100E952DD /* BMI_calculator.swift */,
+				9D9649BD1E5B98F900E952DD /* BMI_Backpack_list_of_tasks.txt */,
 				9D9649AD1E59760900E952DD /* Main.storyboard */,
 				9D9649B01E59760900E952DD /* Assets.xcassets */,
 				9D9649B21E59760900E952DD /* LaunchScreen.storyboard */,
@@ -126,6 +132,7 @@
 				9D9649B41E59760900E952DD /* LaunchScreen.storyboard in Resources */,
 				9D9649B11E59760900E952DD /* Assets.xcassets in Resources */,
 				9D9649AF1E59760900E952DD /* Main.storyboard in Resources */,
+				9D9649BE1E5B98F900E952DD /* BMI_Backpack_list_of_tasks.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D9649AC1E59760900E952DD /* ViewController.swift in Sources */,
+				9D9649BC1E5976B100E952DD /* BMI_calculator.swift in Sources */,
 				9D9649AA1E59760900E952DD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
