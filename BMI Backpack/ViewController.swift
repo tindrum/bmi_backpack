@@ -81,9 +81,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if (data != nil){
             if ((data?.height) != nil) {
                 // get the units
-                let units = data?.units
+                let measurementSystem = data?.measureSystem
                 
-                setSliderMinMax(slider: heightSlider, units: units!)
+                setSliderMinMax(slider: heightSlider, units: measurementSystem!)
                 
                 // figure out where the slider should be
                 
@@ -101,7 +101,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             // self.data!.bmi = Unit.metric
             self.data = BMI(40, 100)
         }
-        setSliderMinMax(slider: heightSlider, units: (data?.units)!)
+        setSliderMinMax(slider: heightSlider, units: (data?.measureSystem)!)
         heightSlider.setValue((self.data?.height)!, animated: false)
         weightTextField.text = String(Int((self.data?.weight)!))
         
@@ -149,12 +149,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func toggleUnits( _ sender: UISwitch) {
         if (sender.isOn) {
             print("metric ON")
-            self.data?.units = Unit.metric
+            self.data?.measureSystem = MeasurementSystem.metric
         } else {
             print("metric OFF (imperial)")
-            self.data?.units = Unit.imperial
+            self.data?.measureSystem = MeasurementSystem.imperial
         }
-        let currentUnits: Unit = (self.data?.units)!
+        let currentUnits: MeasurementSystem = (self.data?.measureSystem)!
         setSliderMinMax(slider: heightSlider, units: currentUnits)
     }
     
@@ -163,6 +163,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
 //    func textFieldDidEndEditing(_ textField: UITextField) {
+//        print("textFieldDidEndEditing")
 //        if (textField == weightTextField ) {
 //            let weightValue = Float(textField.text!)
 //            print("text value changed to \(weightValue)")
@@ -180,11 +181,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func calculateBMI() {
         print("clicked calculate button")
         //: TODO fix the text field issue
-//        if let currentTextField = currentTextField {
-//            currentTextField.resignFirstResponder()
-//        }
-        print(self.data?.height! ?? "no height")
-        print(self.data?.weight! ?? "no weight")
+        currentTextField?.resignFirstResponder()
+        print(data?.height! ?? "no height")
+        print(data?.weight! ?? "no weight")
         let currentBMI:Double = Double((self.data?.bmi)!)
         switch currentBMI {
         case 0.0..<16.0:
@@ -205,7 +204,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func setSliderMinMax( slider: UISlider, units: Unit) {
+    func setSliderMinMax( slider: UISlider, units: MeasurementSystem) {
         // Set the minimum and maximum allowable values for 
         // the height slider. Adjust for metric or imperial units.
         //
@@ -213,12 +212,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // the shortest and tallest man in the world, according to google,
         // plus or minus a little bit. BMI is probably not even accurate for
         // people out at the edges of the height bell curve.
-        let minLabel: Float = round(Float(convertHeight(fromUnits: Unit.imperial, value: minHeightInches, toUnit: units)))
+        let minLabel: Float = round(Float(convertHeight(fromUnits: MeasurementSystem.imperial, value: minHeightInches, toUnit: units)))
         
-        let maxLabel: Float = round(Float(convertHeight(fromUnits: Unit.imperial, value: maxHeightInches, toUnit: units)))
+        let maxLabel: Float = round(Float(convertHeight(fromUnits: MeasurementSystem.imperial, value: maxHeightInches, toUnit: units)))
         
         let unitText: String
-        if (self.data?.units == Unit.metric) {
+        if (self.data?.measureSystem == MeasurementSystem.metric) {
             unitText = " cm"
         } else {
             unitText = " in."
@@ -233,7 +232,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func convertHeight(fromUnits: Unit, value: Float, toUnit: Unit) -> Float {
+    func convertHeight(fromUnits: MeasurementSystem, value: Float, toUnit: MeasurementSystem) -> Float {
         //: TODO: I have more than one metric to imperial conversion functions
         //        Try to unify into one function
         if fromUnits == toUnit {
@@ -241,10 +240,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         switch fromUnits {
             // the incoming units
-        case Unit.metric:
+        case MeasurementSystem.metric:
             // convert TO imperial
             return value * 0.393701
-        case Unit.imperial:
+        case MeasurementSystem.imperial:
             // convert TO metric
             return value * 2.5400013716
         }

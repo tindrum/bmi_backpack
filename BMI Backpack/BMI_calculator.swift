@@ -25,16 +25,20 @@
 import Foundation
 
 /**
-  *Units of measure*
+  *MeasurementSystems of measure*
   - Important: metric and imperial 
-     are the two units supported.
+     are the two MeasurementSystems supported.
  
   - Author: Daniel Henderson
  
 */
 
-enum Unit {
+enum MeasurementSystem {
     case metric, imperial
+}
+
+enum Units {
+    case kilo, pound, meter, foot, inch, centimeter
 }
 
 enum BMICategory {
@@ -44,41 +48,41 @@ enum BMICategory {
 /**
  *BMI struct*
  - Important: Simple struct to hold height, weight, 
-   units (metric or imperial) and a calculated
+   MeasurementSystems (metric or imperial) and a calculated
    value for bmi score.
  
-   If imperial units are used, 
+   If imperial MeasurementSystems are used, 
    weight is in pounds and height is in inches.
-   If metric units are used, 
+   If metric MeasurementSystems are used, 
    weight is in kilograms and height is in centimeters.
-   When units is changed, struct re-computes
+   When MeasurementSystems is changed, struct re-computes
    these values and saves them to the struct.
  
  - Author: Daniel Henderson
 
  - Parameters: 
-   weight: the person's weight (without units)
-   height: the person's height (without units)
-   units: unit of measure (metric or imperial)
+   weight: the person's weight (without MeasurementSystems)
+   height: the person's height (without MeasurementSystems)
+   MeasurementSystems: MeasurementSystem of measure (metric or imperial)
  
  */
 
 struct BMI {
     var weight:Float? = nil
     var height:Float? = nil
-    var _units:Unit = .metric
+    var _measure:MeasurementSystem = .metric
     
     init(_ weight: Float, _ height: Float) {
         self.weight = weight
         self.height = height
     }
     
-    var units: Unit {
+    var measureSystem: MeasurementSystem {
         set {
-            if ( newValue == _units ) {
+            if ( newValue == _measure ) {
                 // do nothing, no change
             } else {
-                if ( newValue == Unit.metric ) {
+                if ( newValue == MeasurementSystem.metric ) {
                     // convert w & h imperial -> metric
                     self.weight = self.weight! * 0.453592
                     self.height = self.height! * 2.5400013716
@@ -88,20 +92,25 @@ struct BMI {
                     self.height = self.height! * 0.393701
                 }
             }
-            _units = newValue
+            _measure = newValue
         }
-        get { return _units }
+        get { return _measure }
     }
 
     
     
     // read-only computed property
     var bmi:Float {
+        
             return toKG(weight) / ( toM(height) * toM(height))
     }
     
+    func convert(value: Float, from: MeasurementSystem, to: MeasurementSystem) -> Float {
+        return 0.0
+    }
+    
     func toKG(_ w : Float?) -> Float {
-        if units == .metric {
+        if measureSystem == .metric {
             return weight!
         } else {
             return weight! * 0.453592
@@ -109,7 +118,7 @@ struct BMI {
     }
     
     func toM( _ h: Float?) -> Float {
-        if units == .metric {
+        if measureSystem == .metric {
             return height! / 100
         } else {
             return height! * 0.0254

@@ -72,7 +72,6 @@
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
                                     <action selector="weightEditing:" destination="BYZ-38-t0r" eventType="editingChanged" id="EY1-Cx-pbM"/>
-                                    <action selector="weightValue:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="c7c-Yh-5dH"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Height" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F54-Ak-YjI">
@@ -130,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="155" minValue="50" maxValue="260" id="8Zb-g0-Nqf">
-                    <rect key="frame" x="0.0" y="0.0" width="347" height="31"/>
+                    <rect key="frame" x="0.0" y="-1" width="347" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </slider>
             </objects>
