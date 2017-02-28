@@ -37,13 +37,14 @@ enum MeasurementSystem {
     case metric, imperial
 }
 
-enum Units {
+enum BmiUnit {
     case kilo, pound, meter, foot, inch, centimeter
 }
 
 enum BMICategory {
     case severeThinness, moderateThinness, mildThinness
 }
+
 
 /**
  *BMI struct*
@@ -68,8 +69,10 @@ enum BMICategory {
  */
 
 struct BMI {
-    var weight:Float? = nil
-    var height:Float? = nil
+    var weight:Float = 40
+    var weightUnits:BmiUnit = .kilo
+    var height:Float = 100
+    var heightUnits:BmiUnit = .centimeter
     var _measure:MeasurementSystem = .metric
     
     init(_ weight: Float, _ height: Float) {
@@ -84,12 +87,16 @@ struct BMI {
             } else {
                 if ( newValue == MeasurementSystem.metric ) {
                     // convert w & h imperial -> metric
-                    self.weight = self.weight! * 0.453592
-                    self.height = self.height! * 2.5400013716
+                    weight = convert(value: weight, from: weightUnits, to: .kilo)!
+                    weightUnits = .kilo
+                    height = convert(value: height, from: heightUnits, to: .centimeter)!
+                    heightUnits = .centimeter
                 } else {
                     // convert w & h metric -> imperial
-                    self.weight = self.weight! * 2.20462
-                    self.height = self.height! * 0.393701
+                    weight = convert(value: weight, from: weightUnits, to: .pound)!
+                    weightUnits = .pound
+                    height = convert(value: height, from: heightUnits, to: .inch)!
+                    heightUnits = .inch
                 }
             }
             _measure = newValue
@@ -101,29 +108,88 @@ struct BMI {
     
     // read-only computed property
     var bmi:Float {
-        
-            return toKG(weight) / ( toM(height) * toM(height))
+        let h = convert(value: height, from: heightUnits, to: .meter)!
+        let w = convert(value: weight, from: weightUnits, to: .kilo)!
+        return w / ( h * h )
     }
-    
-    func convert(value: Float, from: MeasurementSystem, to: MeasurementSystem) -> Float {
-        return 0.0
-    }
-    
-    func toKG(_ w : Float?) -> Float {
-        if measureSystem == .metric {
-            return weight!
-        } else {
-            return weight! * 0.453592
-        }
-    }
-    
-    func toM( _ h: Float?) -> Float {
-        if measureSystem == .metric {
-            return height! / 100
-        } else {
-            return height! * 0.0254
-        }
-    }
-    
     
 }
+
+// BmiUnit: kilo, pound, meter, foot, inch, centimeter
+func convert(value: Float, from: BmiUnit, to: BmiUnit) -> Float? {
+    print("converting \(value) from \(from) to \(to)")
+    switch from {
+    case .kilo:
+        switch to {
+        case .kilo:
+                return value
+        case .pound:
+                return value * 0.453592
+        default:
+                return nil // improper conversion from weight to distance
+        }
+    case .pound:
+        switch to {
+        case .pound:
+            return value
+        case .kilo:
+            return value * 2.5400013716
+        default:
+            return nil // improper conversion
+        }
+    case .meter:
+        switch to {
+        case .meter:
+            return value
+        case .centimeter:
+            return value * 100
+        case .foot:
+            return value * 3.28084
+        case .inch:
+            return value * 39.37008
+        default:
+            return nil // improper conversion distance to weight
+        }
+    case .foot:
+        switch to {
+        case .foot:
+            return value
+        case .meter:
+            return value * 0.3048
+        case .centimeter:
+            return value * 30.48
+        case .inch:
+            return value * 12
+        default:
+            return nil // improper conversion distance to weight
+        }
+    case .inch:
+        switch to {
+        case .inch:
+            return value
+        case .meter:
+            return value * 0.0254
+        case .centimeter:
+            return value * 2.54
+        case .foot:
+            return value / 12
+        default:
+            return nil // improper conversion distance to weight
+        }
+    case .centimeter:
+        switch to {
+        case .centimeter:
+            return value
+        case .meter:
+            return value / 100
+        case .foot:
+            return value * 0.0328084
+        case .inch:
+            return value * 0.393701
+        default:
+            return nil // improper conversion distance to weight
+        }
+    }
+}
+
+    
